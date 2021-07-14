@@ -1,7 +1,5 @@
+import objetos.*;
 
-import objetos.Electrodomestico;
-import objetos.Lavadora;
-import objetos.Television;
 
 public class Actividad1App {
 
