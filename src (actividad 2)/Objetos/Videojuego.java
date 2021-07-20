@@ -10,7 +10,7 @@ public class Videojuego implements Entregable {
 	private int horasEstimadas;
 	private boolean entregado;
 	private String genero;
-	private String compañia;
+	private String compaÃ±ia;
 	
 	// Constantes
 	
@@ -30,12 +30,12 @@ public class Videojuego implements Entregable {
 		this.entregado = ENTREGADO;
 	}
 	
-	public Videojuego(String titulo, int horasEstimadas, String genero, String compañia) {
+	public Videojuego(String titulo, int horasEstimadas, String genero, String compaÃ±ia) {
 		this.titulo = titulo;
 		this.horasEstimadas = horasEstimadas;
 		this.entregado = ENTREGADO;
 		this.genero = genero;
-		this.compañia = compañia;
+		this.compaÃ±ia = compaÃ±ia;
 	}
 	
 	// Metodos
@@ -43,7 +43,7 @@ public class Videojuego implements Entregable {
 	@Override
 	public String toString() {
 		return "Videojuego [titulo=" + titulo + ", horasEstimadas=" + horasEstimadas + ", entregado=" + entregado
-				+ ", genero=" + genero + ", compañia=" + compañia + "]";
+				+ ", genero=" + genero + ", compaÃ±ia=" + compaÃ±ia + "]";
 	}
 	
 	public void entregar() {
@@ -110,12 +110,12 @@ public class Videojuego implements Entregable {
 		this.genero = genero;
 	}
 
-	public String getCompañia() {
-		return compañia;
+	public String getcompaÃ±ia() {
+		return compaÃ±ia;
 	}
 
-	public void setCompañia(String compañia) {
-		this.compañia = compañia;
+	public void setcompaÃ±ia(String compaÃ±ia) {
+		this.compaÃ±ia = compaÃ±ia;
 	}
 	
 }
