@@ -18,7 +18,7 @@ public class Actividad6App {
 	
 	public static void menu(ArrayList<Cine> cines, ArrayList<Pelicula> peliculas, ArrayList<Espectador> espectadores) {
 		
-		int opcion = Integer.parseInt(JOptionPane.showInputDialog("Que quiere hacer:\n1. Habilitar sala\n2. Habilitar pelicula\n3. Vender entrada\n4. Ver clientes"));
+		int opcion = Integer.parseInt(JOptionPane.showInputDialog("Que quiere hacer:\n1. Habilitar sala\n2. Habilitar pelicula\n3. Vender entrada\n4. Ver asientos\n5. Ver clientes"));
 		
 		switch (opcion) {
 			case 1:
@@ -36,6 +36,9 @@ public class Actividad6App {
 				crearVenta(cines, peliculas, espectadores);
 				menu(cines, peliculas, espectadores);
 			case 4:
+				mostrarSala(cines);
+				menu(cines, peliculas, espectadores);
+			case 5:
 				mostrarclientes(espectadores);
 				menu(cines, peliculas, espectadores);
 			default:
@@ -45,10 +48,71 @@ public class Actividad6App {
 		
 	}
 	
-	private static void crearVenta(ArrayList<Cine> cines, ArrayList<Pelicula> peliculas, ArrayList<Espectador> espectadores) {
+	public static void mostrarSala(ArrayList<Cine> cines) {
 		
-		Cine cine = cines.get(cines.indexOf(JOptionPane.showInputDialog("Que sala desea usar")));
-		System.out.println(cine);
+		Cine cine = seleccionarSala(cines); 
+		
+		cine.recorrerSala();
+		
+	}
+	
+	public static void crearVenta(ArrayList<Cine> cines, ArrayList<Pelicula> peliculas, ArrayList<Espectador> espectadores) {
+		
+		Cine cine = seleccionarSala(cines);
+		
+		Pelicula pelicula = seleccionarPelicula(peliculas);
+		
+		cine.comprarEntrada(pelicula, espectadores.get(espectadores.size()-1));
+		
+		menu(cines, peliculas, espectadores);
+		
+	}
+	
+	public static Cine seleccionarSala(ArrayList<Cine> cines) {
+		
+		String output = "";
+		int cont = 0;
+		Cine cine = null;
+		for(int i = 0; i<cines.size(); i++){
+		    String everything = cines.get(i).toString();
+
+		    output += cont + ". " + everything + "\n";  
+		    cont++;
+		}
+		int seleccion = Integer.parseInt(JOptionPane.showInputDialog("Seleccione una sala\n" + output));
+		
+		if (seleccion >= 0 && seleccion <= cont-1) {
+			cine = cines.get(seleccion);
+		} else {
+			JOptionPane.showMessageDialog(null, "Introduzca una sala correcta");
+			seleccionarSala(cines);
+		}
+		
+		return cine;
+		
+	}
+	
+	public static Pelicula seleccionarPelicula(ArrayList<Pelicula> peliculas) {
+		
+		String output = "";
+		int cont = 0;
+		Pelicula pelicula = null;
+		for(int i = 0; i<peliculas.size(); i++){
+		    String everything = peliculas.get(i).toString();
+
+		    output += cont + ". " + everything + "\n";  
+		    cont++;
+		}
+		int seleccion = Integer.parseInt(JOptionPane.showInputDialog("Seleccione una pelicula\n" + output));
+		
+		if (seleccion >= 0 && seleccion <= cont-1) {
+			pelicula = peliculas.get(seleccion);
+		} else {
+			JOptionPane.showMessageDialog(null, "Introduzca una sala correcta");
+			seleccionarPelicula(peliculas);
+		}
+		
+		return pelicula;
 		
 	}
 
